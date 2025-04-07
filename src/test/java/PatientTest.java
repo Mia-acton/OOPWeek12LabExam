@@ -10,9 +10,32 @@ public class PatientTest {
     }
 
     @Test
-    void testInvalidGivenName() {}
+    void testShortGivenName() {
     Exception ex = assertThrows(IllegalArgumentException.class, () -> {
         new Patient("Ma", "Smith", "1234567891", 42);
     });
     assertEquals("Invalid given name length.", ex.getMessage());
 }
+
+    @Test
+    void testValidFamilyName() {
+    Patient p = new Patient ("Alice", "Brown", "9876543219", 23);
+    assertEquals("Brown", p.getFamilyName());
+    }
+
+    @Test
+    void testShortFamilyName() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new Patient("Alice", "Bro", "1234567891", 23);
+        });
+        assertEquals("Invalid family name length.", ex.getMessage());
+    }
+
+
+
+}
+
+
+
+
+
