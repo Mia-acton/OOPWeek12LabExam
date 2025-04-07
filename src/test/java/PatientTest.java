@@ -1,6 +1,7 @@
 import ie.atu.week12.Patient;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PatientTest {
     @Test
     void testValidGivenName() {
@@ -25,7 +26,7 @@ public class PatientTest {
     @Test
     void testShortFamilyName() {
         Exception ex = assertThrows(IllegalArgumentException.class, () -> {
-            new Patient("Alice", "Bro", "1234567891", 23);
+            new Patient("Alice", "Br", "1234567891", 23);
         });
         assertEquals("Invalid family name length.", ex.getMessage());
     }
