@@ -31,8 +31,19 @@ public class PatientTest {
         assertEquals("Invalid family name length.", ex.getMessage());
     }
 
+    @Test
+    void testValidHSENumber() {
+        Patient p = new Patient ("Bobby", "Gomez", "1358976535", 86);
+        assertEquals("1358976535", p.getHseNumber());
+    }
 
-
+    @Test
+    void testShortHSENumber() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new Patient("Cathal", "Davin", "13254769", 16);
+        });
+        assertEquals("Invalid HSE number length.", ex.getMessage());
+    }
 }
 
 
