@@ -1,7 +1,6 @@
 import ie.atu.week12.Patient;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PatientTest {
     @Test
     void testValidGivenName() {
@@ -43,6 +42,20 @@ public class PatientTest {
             new Patient("Cathal", "Davin", "13254769", 16);
         });
         assertEquals("Invalid HSE number length.", ex.getMessage());
+    }
+
+    @Test
+    void testValidAge() {
+        Patient p = new Patient ("Holly", "Fahy", "1562439874", 86);
+        assertEquals(86, p.getAge());
+    }
+
+    @Test
+    void testInvalidAge() {
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new Patient("Holly", "Fahy", "1562439874", 123);
+        });
+        assertEquals("Invalid age.", ex.getMessage());
     }
 }
 
